@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 set -e
-if [ ! -d valkey ]; then
+
+# Clone repository if it doesn't exist
+if [ ! -d "valkey" ]; then
   git clone https://github.com/valkey-io/valkey.git
 fi
+
 cd valkey
 make distclean || true
 make -j$(nproc)

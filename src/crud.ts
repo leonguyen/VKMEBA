@@ -6,15 +6,10 @@ const redis = new Redis({
 });
 
 async function main() {
-  
   await redis.set("hello", "world");
-  
   const value = await redis.get("hello");
-  
-  console.log(value);
-  
+  console.log("CRUD direct fetch:", value);
   await redis.del("hello");
-  
   await redis.quit();
 }
 
