@@ -1,16 +1,13 @@
 {
-  "name": "valkey-ts-demo",
-  "version": "1.0.0",
   "type": "module",
-  "scripts": {
-    "build-valkey": "bash build-valkey.sh",
-    "crud": "tsx src/crud.ts",
-    "build": "tsc"
+  "engines": {
+    "node": ">=22"
   },
   "dependencies": {
-    "ioredis": "^5.8.1"
+    "redis": "^5.8.2"
   },
   "devDependencies": {
+    "@types/node": "^24.0.0",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   }
