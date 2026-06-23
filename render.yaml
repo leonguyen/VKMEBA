@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: valkey-demo
+
+    env: node
+
+    buildCommand: |
+      npm install
+      npm run build
+
+    startCommand: |
+      npm start 
