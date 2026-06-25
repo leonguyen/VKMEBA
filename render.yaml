@@ -1,9 +1,14 @@
 services:
-  - type: web
-    name: valkey-demo
-    env: node
-    buildCommand: |
-      npm install
-      npm run build
-    startCommand: |
-      npm start
+  - type: pserv
+    name: valkey-server
+    env: docker
+    repo: https://github.com/valkey-io/valkey # Or your own repo if hosting there
+    plan: starter # Persistent disks require at least the Starter plan
+    dockerfile: Dockerfile
+    disk:
+      name: valkey-data
+      mountPath: /data
+      sizeGB: 10
+    envVars:
+      - key: VALKEY_PASSWORD
+        generateValue: true # Automatically generates a secure password

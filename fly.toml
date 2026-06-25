@@ -1,0 +1,20 @@
+app = "my-valkey-db" # Replace with your unique app name
+primary_region = "lax"
+
+[build]
+  image = "valkey/valkey:8.0-alpine"
+
+[env]
+  # Valkey configs passed as flags via the entrypoint override
+  # Fly.io injects secrets securely
+
+[[mounts]]
+  source = "valkey_data"
+  destination = "/data"
+
+[[services]]
+  internal_port = 6379
+  protocol = "tcp"
+  
+  # Keep this block empty if you want it completely private inside your Fly WireGuard network.
+  # Remove the [[services]] section entirely if you only want internal mesh routing via my-valkey-db.internal:6379
